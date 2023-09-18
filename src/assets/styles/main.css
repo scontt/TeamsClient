@@ -1,0 +1,25 @@
+:root {
+    --main-bg-color: #EDEDEDFF;
+    --main-border-color: #ADB5BD;
+    --main-font-family: 'Jost', sans-serif; 
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::after, *::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--main-font-family);
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+}

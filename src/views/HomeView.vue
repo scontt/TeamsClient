@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div class="wrapper">
         <header class="header">
             <div class="header__container">
                 <div class="header_inner">
@@ -9,7 +9,7 @@
                                 <a href="#" class="menu-list__item-a">Группы</a>
                             </ul>
                             <ul class="menu-list__item">
-                                <a href="#" class="menu-list__item-a">Платные</a>
+                                <a href="#" class="menu-list__item-a">Вакансии</a>
                             </ul>
                             <ul class="menu-list__item">
                                 <a href="#" class="menu-list__item-a">Поиск</a>
@@ -20,7 +20,8 @@
                         </li>
                     </div>
                     <div class="auth">
-                        <router-link to="/register">Регистрация</router-link>
+                        <router-link to="/register" class="auth-link">Регистрация</router-link>
+                        <router-link to="/login" class="auth-link">Авторизация</router-link>
                     </div>
                 </div>
             </div>
@@ -102,3 +103,5 @@ export default {
   name: 'HomeView'
 }
 </script>
+
+<style src="../assets/styles/home.css" scoped />

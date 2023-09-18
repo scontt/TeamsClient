@@ -6,118 +6,73 @@
                 <form class="reg-form">
                     <div class="input-field">
                         <label>Логин</label>
-                        <input type="text" class="input_username">
+                        <input type="text" v-model="username" class="input_username">
                     </div>
                     <div class="input-field">
                         <label>Номер телефона</label>
-                        <input type="text" class="input_phone-number">
+                        <input type="text" v-model="phoneNumber" class="input_phone-number">
                     </div>
                     <div class="input-field">
                         <label>Пароль</label>
-                        <input type="password" class="input_password">
+                        <input type="password" v-model="password" class="input_password">
                     </div>
                     <div class="input-field">
                         <label>Подтверждение пароля</label>
                         <input type="password" class="input_password">
                     </div>
-                    <button type="submit" class="btn">Зарегистрироваться</button>
+                    <div class="input-field">
+                        <label>E-mail</label>
+                        <input type="text" v-model="email" class="input_phone-number">
+                    </div>
+                    <button type="submit" @click="regUser" class="btn">Зарегистрироваться</button>
                 </form>
             </div>
         </main>
     </div>
 </template>
 
-<script></script>
+<script>
+import axios from 'axios'
 
-<style>
-:root {
-    --main-bg-color: #EDEDEDFF;
-    --main-border-color: #ADB5BD;
-    --main-font-family: 'Jost', sans-serif; 
+export default {
+    data() {
+        return {
+            username: '',
+            password: '',
+            phoneNumber: '',
+            email: ''
+        }
+    },
+    methods: {
+        async regUser() {
+            const json = JSON.stringify({
+                    username: this.username,
+                    email: this.email,
+                    phoneNumber: this.phoneNumber,
+                    password: this.password
+                })
+            const response = await fetch('http://localhost:5282/api/User/register', {
+                method: 'POST',
+                withCredentials: true,    
+                crossorigin: true,    
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: this.username,
+                    email: this.email,
+                    phoneNumber: this.phoneNumber,
+                    password: this.password
+                })
+            });
+            // const response = await axios.get('http://localhost:5282/api/Target/allTargets');
+            console.log(response);
+        }
+    }
 }
+</script>
 
-html {
-    box-sizing: border-box;
-}
+<style src="../assets/styles/register.css" scoped>
 
-*, *::after, *::before {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    height: 100%;
-    font-family: var(--main-font-family);
-}
-
-#app {
-  height: inherit;
-}
-
-.wrapper {
-    height: 100%;
-    width: 100%;
-}
-
-.main {
-    height: inherit;
-    width: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.register {
-    display: flex;
-    flex-direction: column;
-    min-width: 20%;
-    min-height: 450px;
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--main-border-color);
-    border-radius: 20px;
-}
-
-.reg-label {
-    margin: 20px auto 0;
-    font-size: 26px;
-}
-
-input {
-    min-width: 200px;
-    min-height: 27px;
-    border: 1px solid var(--main-border-color);
-    border-radius: 7px;
-    padding-left: 3px;
-}
-
-.reg-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 22px;
-}
-
-.input-field {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0 0 0;
-    gap: 5px;
-    font-size: 19px;
-}
-
-.btn {
-    margin-top: 30px;
-    min-height: 27px;
-    min-width: 200px;
-    border: 1px solid var(--main-border-color);
-    border-radius: 7px;
-    background-color: #fff;
-    font-family: var(--main-font-family);
-    font-size: 16px;
-}
-
-.btn:hover {
-    background-color: #ebebeb;
-}
 </style>
