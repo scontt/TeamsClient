@@ -44,18 +44,18 @@ export default {
         }
     },
     methods: {
-        async regUser() {
+        regUser() {
             const json = JSON.stringify({
                     username: this.username,
                     email: this.email,
                     phoneNumber: this.phoneNumber,
                     password: this.password
-                })
-            const response = await fetch('http://localhost:5282/api/User/register', {
+                });
+            // const response = axios.post('http://localhost:5282/api/User/register', json, {
+            //     headers: 'application/json'
+            // });
+            const response = fetch('http://localhost:5282/api/User/register', {
                 method: 'POST',
-                withCredentials: true,    
-                crossorigin: true,    
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -66,7 +66,6 @@ export default {
                     password: this.password
                 })
             });
-            // const response = await axios.get('http://localhost:5282/api/Target/allTargets');
             console.log(response);
         }
     }
