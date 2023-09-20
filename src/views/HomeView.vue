@@ -11,11 +11,11 @@
                             <p class="groupdescription">Краткое описание группы</p>
                             <p class="membersamount">Количество участников: 0</p>
                         </div> -->
-                        <router-link to="/creategroup">
+                        <router-link class="create-link" to="/creategroup">
                             <div class="mylist-new-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
-                                <path d="M38 0L38 75" stroke="#ADB5BD" stroke-width="3"/>
-                                <line y1="37.5" x2="75" y2="37.5" stroke="#ADB5BD" stroke-width="3"/>
+                                <svg class="newGroupsvg" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
+                                <path class="newGroupsvg" d="M38 0L38 75" stroke="#ADB5BD" stroke-width="3"/>
+                                <line class="newGroupsvg" y1="37.5" x2="75" y2="37.5" stroke="#ADB5BD" stroke-width="3"/>
                                 </svg>
                             </div>
                         </router-link>

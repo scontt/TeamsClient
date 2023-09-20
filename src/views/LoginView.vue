@@ -20,6 +20,11 @@
 </template>
 
 <script>
+import router from '@/router';
+import store from '@/store'
+
+// import * as query from '@/api'
+
 export default {
     data() {
         return {
@@ -39,13 +44,27 @@ export default {
                     password: this.password
                 })
             });
+    
             if (response.ok === true) {
+                console.log(response);
                 const data = await response.json();
-                sessionStorage.setItem(tokenKey, data.access_token);
+                console.log(data.access_token);
+                sessionStorage.setItem('tokenKey', data.access_token);
+                sessionStorage.setItem('username', data.username);
             }
             else {
                 console.log('Status: ', response.status);
             }
+            const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + sessionStorage.getItem('username'), {
+                method: 'GET',
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const userJson = await user.json();
+            localStorage.setItem('userId', userJson.id);
+            store.commit('logged');
+            router.push('/');
         }
     }
 }

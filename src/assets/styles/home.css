@@ -65,3 +65,12 @@
     font-weight: 600;
     color: var(--main-border-color);
   }
+
+  .create-link:hover .newGroupsvg{
+    stroke: var(--hover-border-color);
+  }
+
+  .create-link:hover .mylist-new-item{
+    background-color: var(--hover-bg-color);
+    border: 1px dashed var(--hover-border-color);
+  }

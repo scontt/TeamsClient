@@ -4,6 +4,8 @@
     --main-font-family: 'Jost', sans-serif;
     --temporary-bg-color: #F7F7F7FF;
     --header-height: 12vh;
+    --hover-border-color: #EDEDEDFF;
+    --hover-bg-color: #ADB5BD;
 }
 
 html {
@@ -57,4 +59,8 @@ input {
     background-color: #fff;
     font-family: var(--main-font-family);
     font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #ebebeb;
 }

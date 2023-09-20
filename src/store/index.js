@@ -1,23 +1,29 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { createApp } from 'vue'
+import { createStore } from 'vuex'
+import 'es6-promise/auto';
 
-const store = new Vuex.Store({
+export default createStore({
     state: {
-        groups: 1
-    },
-    getters: {
-
+        isLoggedIn: false
     },
     mutations: {
+        logged (state) {
+            state.isLoggedIn = true
+        },
+        logout (state) {
+            state.isLoggedIn = false
+        }
+    },
+    getters: {
+        isUserLogged (state) {
+            return state.isLoggedIn
+        }
+    },
+    actions () {
 
     },
-    actions: {
-
-    },
-    modules: {
+    modules () {
 
     }
 })
-
-// export default createStore({
     

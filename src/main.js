@@ -7,5 +7,5 @@ import './assets/styles/main.css'
 
 const app = createApp(App)
 app.use(router)
+    .use(store)
     .mount('#app')
-app.use(store)
