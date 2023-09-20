@@ -5,7 +5,7 @@
                     <div class="header__menu">
                         <li class="menu-list">
                             <ul class="menu-list__item">
-                                <a href="#" class="menu-list__item-a">Группы</a>
+                                <router-link to="/" class="menu-list__item-a">Группы</router-link>
                             </ul>
                             <ul class="menu-list__item">
                                 <a href="#" class="menu-list__item-a">Вакансии</a>

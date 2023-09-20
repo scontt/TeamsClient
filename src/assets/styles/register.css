@@ -24,14 +24,6 @@
       font-size: 26px;
   }
   
-  input {
-      min-width: 200px;
-      min-height: 27px;
-      border: 1px solid var(--main-border-color);
-      border-radius: 7px;
-      padding-left: 3px;
-  }
-  
   .reg-form {
       display: flex;
       flex-direction: column;

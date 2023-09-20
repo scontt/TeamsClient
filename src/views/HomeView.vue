@@ -48,6 +48,11 @@ import Header from '../components/Header.vue'
 
 export default {
   name: 'HomeView',
+  methods: {
+    getGroups() {
+        
+    }
+  },
   components: {
     Header
   }

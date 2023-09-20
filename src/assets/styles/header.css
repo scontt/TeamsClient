@@ -1,10 +1,12 @@
+@import url(./main.css);
+
 .header__container {
     display: flex;
 }
 
 .header {
     width: 100%;
-    min-height: 80px;
+    height: var(--header-height);
 }
 
 .header_inner {

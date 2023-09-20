@@ -3,6 +3,7 @@
     --main-border-color: #ADB5BD;
     --main-font-family: 'Jost', sans-serif;
     --temporary-bg-color: #F7F7F7FF;
+    --header-height: 12vh;
 }
 
 html {
@@ -33,4 +34,27 @@ ul {
 a {
     text-decoration: none;
     color: black;
+}
+
+input {
+    min-width: 200px;
+    min-height: 27px;
+    border: 1px solid var(--main-border-color);
+    border-radius: 7px;
+    padding-left: 3px;
+}
+
+#app {
+    height: inherit;
+}
+
+.btn {
+    margin-top: 30px;
+    min-height: 27px;
+    min-width: 200px;
+    border: 1px solid var(--main-border-color);
+    border-radius: 7px;
+    background-color: #fff;
+    font-family: var(--main-font-family);
+    font-size: 16px;
 }
