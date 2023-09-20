@@ -1,7 +1,8 @@
 :root {
     --main-bg-color: #EDEDEDFF;
     --main-border-color: #ADB5BD;
-    --main-font-family: 'Jost', sans-serif; 
+    --main-font-family: 'Jost', sans-serif;
+    --temporary-bg-color: #F7F7F7FF;
 }
 
 html {
@@ -22,4 +23,14 @@ html, body {
 .wrapper {
     height: 100%;
     width: 100%;
+}
+  
+ul {
+    list-style-type: none;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }

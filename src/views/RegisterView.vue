@@ -24,7 +24,7 @@
                         <label>E-mail</label>
                         <input type="text" v-model="email" class="input_phone-number">
                     </div>
-                    <button type="submit" @click="regUser" class="btn">Зарегистрироваться</button>
+                    <button type="button" @click="regUser" class="btn">Зарегистрироваться</button>
                 </form>
             </div>
         </main>
@@ -44,7 +44,7 @@ export default {
         }
     },
     methods: {
-        regUser() {
+        async regUser() {
             const json = JSON.stringify({
                     username: this.username,
                     email: this.email,
@@ -54,8 +54,9 @@ export default {
             // const response = axios.post('http://localhost:5282/api/User/register', json, {
             //     headers: 'application/json'
             // });
-            const response = fetch('http://localhost:5282/api/User/register', {
+            const response = await fetch('http://localhost:5282/api/User/register', {
                 method: 'POST',
+                RequestMode:'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
