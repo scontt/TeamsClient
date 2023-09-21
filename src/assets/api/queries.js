@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export function getUserByUsername(username) {
+function getUserByUsername(username) {
     const response = axios.get('http://localhost:5282/api/User/getbyusername/' + username);
     return response;
 }
 
-export function createGroup(groupBody) {
+function createGroup(groupBody) {
     const response = axios.post('http://localhost:5282/api/Group', {
         method: 'POST',
         headers: {
@@ -16,7 +16,7 @@ export function createGroup(groupBody) {
     return response;
 }
 
-export async function getJwtToken(body) {
+async function getJwtToken(body) {
     const response = await fetch('http://localhost:5282/api/User/login', {
                 method: 'POST',
                 headers: {

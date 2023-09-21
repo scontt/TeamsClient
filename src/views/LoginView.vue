@@ -23,8 +23,6 @@
 import router from '@/router';
 import store from '@/store'
 
-// import * as query from '@/api'
-
 export default {
     data() {
         return {

@@ -1,6 +1,6 @@
-import { createApp } from 'vue'
 import { createStore } from 'vuex'
 import 'es6-promise/auto';
+import { auth } from "./auth.module";
 
 export default createStore({
     state: {
@@ -23,7 +23,7 @@ export default createStore({
 
     },
     modules () {
-
+        auth
     }
 })
     
