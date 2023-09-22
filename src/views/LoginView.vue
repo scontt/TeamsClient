@@ -12,7 +12,7 @@
                         <label>Пароль</label>
                         <input type="password" v-model="password" class="input_password">
                     </div>
-                    <button type="button" @click="loginUser" class="btn">Зарегистрироваться</button>
+                    <button type="button" @click="loginUser" class="btn">Войти</button>
                 </form>
             </div>
         </main>
@@ -22,12 +22,26 @@
 <script>
 import router from '@/router';
 import store from '@/store'
+import { Form, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
 
 export default {
+    name: 'Login',
     data() {
+        const schema = yup.object().shape({
+            username: yup.string().required("Username is required!"),
+            password: yup.string().required("Password is required!"),
+        });
+
         return {
-            username: '',
-            password: ''
+            schema,
+            message: '',
+            loading: false
+        }
+    },
+    computed: {
+        loggedIn() {
+            return this.$store.state.status.auth.loggedIn
         }
     },
     methods: {
@@ -53,7 +67,8 @@ export default {
             else {
                 console.log('Status: ', response.status);
             }
-            const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + sessionStorage.getItem('username'), {
+            const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + 
+            sessionStorage.getItem('username'), {
                 method: 'GET',
                 header: {
                     'Content-Type': 'application/json'
