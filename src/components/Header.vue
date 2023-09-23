@@ -38,7 +38,7 @@ import store from '@/store';
 export default {
     methods: {
         logout() {
-            sessionStorage.clear();
+            localStorage.clear();
             store.commit('logout');
         }
     }

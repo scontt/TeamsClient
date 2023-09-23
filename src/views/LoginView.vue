@@ -21,32 +21,25 @@
 
 <script>
 import router from '@/router';
-import store from '@/store'
-import { Form, Field, ErrorMessage } from "vee-validate";
-import * as yup from "yup";
+import store from '@/store';
+import authHeader from '@/services/auth-header';
 
 export default {
     name: 'Login',
     data() {
-        const schema = yup.object().shape({
-            username: yup.string().required("Username is required!"),
-            password: yup.string().required("Password is required!"),
-        });
 
         return {
-            schema,
-            message: '',
-            loading: false
+
         }
     },
     computed: {
         loggedIn() {
-            return this.$store.state.status.auth.loggedIn
+            return this.$store.state.isLoggedIn
         }
     },
     methods: {
         async loginUser() {
-            const response = await fetch('http://localhost:5282/api/User/login', {
+            const response = await fetch('http://localhost:5282/api/User/auth/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,22 +54,28 @@ export default {
                 console.log(response);
                 const data = await response.json();
                 console.log(data.access_token);
-                sessionStorage.setItem('tokenKey', data.access_token);
-                sessionStorage.setItem('username', data.username);
+                localStorage.setItem('user', JSON.stringify({
+                    username: data.username,
+                    access_token: data.access_token
+                }));
             }
             else {
                 console.log('Status: ', response.status);
             }
+            let localUser = JSON.parse(localStorage.getItem('user'));
             const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + 
-            sessionStorage.getItem('username'), {
-                method: 'GET',
-                header: {
-                    'Content-Type': 'application/json'
-                }
+            localUser.username, {
+                method: 'GET'
             });
             const userJson = await user.json();
             localStorage.setItem('userId', userJson.id);
             store.commit('logged');
+            const groups = await fetch('http://localhost:5282/api/Group/usergroups?userId=' + 
+            localStorage.getItem('userId'), {
+                method: 'GET'
+            });
+            let groupsJs = await groups.json();
+            localStorage.setItem('groups', groupsJs);
             router.push('/');
         }
     }

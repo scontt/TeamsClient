@@ -34,11 +34,25 @@ export default {
     },
     methods: {
         async create() {
+            let owner = localStorage.getItem('userId');
             const json = JSON.stringify({
                 name: this.groupName,
-                description: this.description
+                description: this.description,
+                ownerId: Number(owner)
             });
-            const response = await fetch('http://localhost:5282/api/Group')
+            console.log(json);
+            const response = await fetch('http://localhost:5282/api/Group/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: 
+                    JSON.stringify({
+                        name: this.groupName,
+                        description: this.description,
+                        ownerId: Number(owner)
+                })
+            });
         }
     },
     components: {

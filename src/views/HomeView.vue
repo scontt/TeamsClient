@@ -20,7 +20,7 @@
                             </div>
                         </router-link>
                     </div>
-                </div>
+                </div>      
                 <div class="my-section">
                     <h2 class="your-invitations">Ваши приглашения</h2>
                     <div class="my-list">

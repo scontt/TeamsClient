@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
 import 'es6-promise/auto';
-import { auth } from "./auth.module";
 
 export default createStore({
     state: {
-        isLoggedIn: false
+        isLoggedIn: false,
+        groups: []
     },
     mutations: {
         logged (state) {
@@ -12,18 +12,24 @@ export default createStore({
         },
         logout (state) {
             state.isLoggedIn = false
-        }
+        },
+        fillGroups (state, list) {
+            state.groups = list
+        },
     },
     getters: {
         isUserLogged (state) {
             return state.isLoggedIn
+        },
+        getGroups (state) {
+            return state.groups
         }
     },
     actions () {
-
+        
     },
     modules () {
-        auth
+        
     }
 })
     
