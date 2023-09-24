@@ -1,3 +1,4 @@
+import authHeader from "@/services/auth-header";
 import store from ".";
 
 
@@ -14,7 +15,7 @@ export const userModule = {
         login({state}, {_user, _access_token}) {
             store.dispatch('userLogged');
             localStorage.setItem('userId', _user);
-            localStorage.setItem('accesse_token', _access_token);
+            localStorage.setItem('access_token', _access_token);
         },
         setGroups(state, _groups) {
             state.groups = _groups;
@@ -30,10 +31,12 @@ export const userModule = {
         },
         async addGroup({dispatch}, _group) {
             try {
+                const bearer = authHeader();
                 const response = await fetch('http://localhost:5282/api/Group/create', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization': bearer
                     },
                     body: _group
                 });
@@ -51,7 +54,6 @@ export const userModule = {
                     method: 'GET',
                 });
                 let _groups = await response.json();
-                console.log(_groups)
                 commit('setGroups', _groups);
             }
             catch (e) {

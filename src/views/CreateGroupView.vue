@@ -49,7 +49,6 @@ export default {
                 description: this.description,
                 ownerId: Number(owner)
             });
-            console.log(json);
             this.addGroup(json);
             router.go(-1);
         }

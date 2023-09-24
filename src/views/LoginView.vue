@@ -55,22 +55,13 @@ export default {
             });
 
             if (response.ok === true) {
-                console.log(response);
                 const data = await response.json();
-                console.log(data);
                 let user = JSON.parse(data.user);
                 this.signIn({_user: user.Id, _access_token: data.access_token});
             }
             else {
                 console.log('Status: ', response.status);
             }
-
-            // let localUser = JSON.parse(localStorage.getItem('user_token'));
-            // const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + 
-            //     localUser.username, {
-            //         method: 'GET'
-            //     });
-            // const userJson = await user.json();
             
             const groups = await fetch('http://localhost:5282/api/Group/usergroups?userId=' + 
                 localStorage.getItem('userId'), {

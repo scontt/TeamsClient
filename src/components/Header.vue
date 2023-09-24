@@ -39,10 +39,6 @@ import store from '@/store';
 
 export default {
     methods: {
-        // logout() {
-        //     localStorage.clear();
-        //     store.commit('logout');
-        // },
         ...mapActions({
             logout: 'user/userLogoff'
         }),

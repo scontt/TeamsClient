@@ -67,7 +67,6 @@ export default {
                     password: this.password
                 })
             });
-            console.log(response);
         }
     }
 }
