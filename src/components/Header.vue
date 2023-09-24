@@ -18,12 +18,12 @@
                             </ul>
                         </li>
                     </div>
-                    <div class="auth" v-if="!$store.state.isLoggedIn">
+                    <div class="auth" v-if="!getLogged">
                         <router-link to="/register" class="auth-link">Регистрация</router-link>
                         <router-link to="/login" class="auth-link">Авторизация</router-link>
                     </div>
                     <div class="logout" v-else>
-                        <router-link @click.native="logout" to="/">Выход</router-link>
+                        <router-link @click.native="userLogoff" to="/">Выход</router-link>
                     </div>
                 </div>
             </div>
@@ -33,14 +33,32 @@
 <style src="../assets/styles/header.css" scoped></style>
 
 <script>
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex';
+
 import store from '@/store';
 
 export default {
     methods: {
-        logout() {
-            localStorage.clear();
-            store.commit('logout');
+        // logout() {
+        //     localStorage.clear();
+        //     store.commit('logout');
+        // },
+        ...mapActions({
+            logout: 'user/userLogoff'
+        }),
+        userLogoff() {
+            this.logout();
+            window.location.reload();
         }
-    }
+    },
+    computed: {
+    ...mapState({
+        isLogged: state => state.user.isLogged,
+        groups: state => state.user.groups
+    }),
+    ...mapGetters({
+        getLogged: 'getLogged'
+    })
+  }
 }
 </script>

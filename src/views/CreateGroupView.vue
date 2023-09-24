@@ -23,7 +23,9 @@
 
 <script>
 import { loadConfig } from '@babel/core/lib/config/files';
-import Header from '../components/Header.vue'
+import Header from '../components/Header.vue';
+import {mapActions, mapMutations} from 'vuex';
+import router from '@/router';
 
 export default {
     data() {
@@ -33,6 +35,13 @@ export default {
         }
     },
     methods: {
+        ...mapMutations({
+
+        }),
+        ...mapActions({
+            addGroup: 'user/addGroup',
+            refreshGroupsList: 'user/refreshGroupsList'
+        }),
         async create() {
             let owner = localStorage.getItem('userId');
             const json = JSON.stringify({
@@ -41,18 +50,8 @@ export default {
                 ownerId: Number(owner)
             });
             console.log(json);
-            const response = await fetch('http://localhost:5282/api/Group/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: 
-                    JSON.stringify({
-                        name: this.groupName,
-                        description: this.description,
-                        ownerId: Number(owner)
-                })
-            });
+            this.addGroup(json);
+            router.go(-1);
         }
     },
     components: {

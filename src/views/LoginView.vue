@@ -2,7 +2,7 @@
     <div class="wrapper">
         <main class="main">
             <div class="login">
-                <h2 class="reg-label">Регистрация</h2>
+                <h2 class="reg-label">Авторизация</h2>
                 <form class="reg-form">
                     <div class="input-field">
                         <label>Логин</label>
@@ -21,13 +21,14 @@
 
 <script>
 import router from '@/router';
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 import store from '@/store';
 import authHeader from '@/services/auth-header';
+
 
 export default {
     name: 'Login',
     data() {
-
         return {
 
         }
@@ -38,6 +39,9 @@ export default {
         }
     },
     methods: {
+        ...mapActions({
+            signIn: 'user/userLogin'
+        }),
         async loginUser() {
             const response = await fetch('http://localhost:5282/api/User/auth/signin', {
                 method: 'POST',
@@ -49,30 +53,28 @@ export default {
                     password: this.password
                 })
             });
-    
+
             if (response.ok === true) {
                 console.log(response);
                 const data = await response.json();
-                console.log(data.access_token);
-                localStorage.setItem('user', JSON.stringify({
-                    username: data.username,
-                    access_token: data.access_token
-                }));
+                console.log(data);
+                let user = JSON.parse(data.user);
+                this.signIn({_user: user.Id, _access_token: data.access_token});
             }
             else {
                 console.log('Status: ', response.status);
             }
-            let localUser = JSON.parse(localStorage.getItem('user'));
-            const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + 
-            localUser.username, {
-                method: 'GET'
-            });
-            const userJson = await user.json();
-            localStorage.setItem('userId', userJson.id);
-            store.commit('logged');
+
+            // let localUser = JSON.parse(localStorage.getItem('user_token'));
+            // const user = await fetch('http://localhost:5282/api/User/getbyname?username=' + 
+            //     localUser.username, {
+            //         method: 'GET'
+            //     });
+            // const userJson = await user.json();
+            
             const groups = await fetch('http://localhost:5282/api/Group/usergroups?userId=' + 
-            localStorage.getItem('userId'), {
-                method: 'GET'
+                localStorage.getItem('userId'), {
+                    method: 'GET'
             });
             let groupsJs = await groups.json();
             localStorage.setItem('groups', groupsJs);

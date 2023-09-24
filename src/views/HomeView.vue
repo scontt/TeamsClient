@@ -6,11 +6,11 @@
                 <div class="my-section">
                     <h2 class="your-groups">Ваши группы</h2>
                     <div class="my-list">
-                        <!-- <div class="mylist-item">
-                            <h3 class="groupname"><a href="#" class="grouplink">Название группы</a></h3>
-                            <p class="groupdescription">Краткое описание группы</p>
+                        <div class="mylist-item" v-for="group in groups">
+                            <h3 class="groupname"><a href="#" class="grouplink">{{ group.name }}</a></h3>
+                            <p class="groupdescription">{{ group.description }}</p>
                             <p class="membersamount">Количество участников: 0</p>
-                        </div> -->
+                        </div>
                         <router-link class="create-link" to="/creategroup">
                             <div class="mylist-new-item">
                                 <svg class="newGroupsvg" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" fill="none">
@@ -44,17 +44,33 @@
 
 <script>
 // @ is an alias to /src
-import Header from '../components/Header.vue'
+import Header from '../components/Header.vue';
+import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: 'HomeView',
   methods: {
-    getGroups() {
-        
-    }
+    ...mapMutations({
+
+    }),
+    ...mapActions({
+        refreshGroupsList: 'user/refreshGroupsList'
+    }),
   },
   components: {
     Header
+  },
+  beforeMount() {
+    this.refreshGroupsList();
+  },
+  computed: {
+    ...mapState({
+        isLogged: state => state.user.isLogged,
+        groups: state => state.user.groups
+    }),
+    ...mapGetters({
+        getGroups: 'user/getGroups'
+    })
   }
 }
 </script>

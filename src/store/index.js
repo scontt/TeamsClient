@@ -1,35 +1,39 @@
 import { createStore } from 'vuex'
+import { userModule } from './userModule';
 import 'es6-promise/auto';
 
 export default createStore({
-    state: {
-        isLoggedIn: false,
-        groups: []
-    },
-    mutations: {
-        logged (state) {
-            state.isLoggedIn = true
-        },
-        logout (state) {
-            state.isLoggedIn = false
-        },
-        fillGroups (state, list) {
-            state.groups = list
-        },
-    },
+    state: () => ({
+        isLogged: false,
+    }),
     getters: {
-        isUserLogged (state) {
-            return state.isLoggedIn
-        },
-        getGroups (state) {
-            return state.groups
+        getLoginStatus (state) {
+            return state.isLogged;
         }
     },
-    actions () {
-        
+    getters: {
+        getLogged(state) {
+            return state.isLogged;
+        }
     },
-    modules () {
-        
+    mutations: {
+        setLogged(state) {
+            state.isLogged = true;
+        },
+        setUnlogged(state) {
+            state.isLogged = false;
+        }
+    },
+    actions: {
+        userLogged({commit}) {
+            commit('setLogged');
+        },
+        userUnlogged({commit}) {
+            commit('setUnlogged');
+        }
+    },
+    modules: {
+        user: userModule
     }
 })
     
