@@ -18,12 +18,14 @@
                             </ul>
                         </li>
                     </div>
-                    <div class="auth" v-if="!getLogged">
-                        <router-link to="/register" class="auth-link">Регистрация</router-link>
-                        <router-link to="/login" class="auth-link">Авторизация</router-link>
-                    </div>
-                    <div class="logout" v-else>
-                        <router-link @click.native="userLogoff" to="/">Выход</router-link>
+                    <div class="auth-container">
+                        <div class="auth" v-if="!getLogged">
+                            <router-link to="/register" class="auth-link">Регистрация</router-link>
+                            <router-link to="/login" class="auth-link">Авторизация</router-link>
+                        </div>
+                        <div class="logout" v-else>
+                            <router-link @click.native="userLogoff" to="/">Выход</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,7 +46,6 @@ export default {
         }),
         userLogoff() {
             this.logout();
-            window.location.reload();
         }
     },
     computed: {

@@ -17,6 +17,7 @@
       background-color: var(--main-bg-color);
       border: 1px solid var(--main-border-color);
       border-radius: 20px;
+      align-items: center;
   }
   
   .reg-label {
@@ -36,7 +37,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 22px;
   }
   
   .input-field {
@@ -60,4 +60,12 @@
   
   .btn:hover {
       background-color: #ebebeb;
+  }
+
+  .loginError {
+    margin: auto 0;
+    padding: 3px;
+    background-color: #F6CA97;
+    border: 1px solid #F6B264;
+    border-radius: 5px;
   }

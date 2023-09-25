@@ -22,6 +22,7 @@ export default createStore({
         },
         setUnlogged(state) {
             state.isLogged = false;
+            localStorage.clear();
         }
     },
     actions: {

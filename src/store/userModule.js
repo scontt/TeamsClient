@@ -21,8 +21,7 @@ export const userModule = {
             state.groups = _groups;
         },
         logoff(state) {
-            state.isLogged = false;
-            localStorage.clear();
+            state.groups = [];
         },
     },
     actions: {
@@ -61,7 +60,8 @@ export const userModule = {
             }
         },
         async userLogoff({commit}) {
-            localStorage.clear();
+            window.location.reload();
+            commit('logoff');
             store.dispatch('userUnlogged');
         }
     },

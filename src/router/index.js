@@ -24,6 +24,10 @@ const routes = [
     path: '/creategroup',
     name: 'creategroup',
     component: CreateGroupView
+  },
+  {
+    path: '/group',
+    name: 'group'
   }
 ]
 

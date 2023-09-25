@@ -14,6 +14,9 @@
                     </div>
                     <button type="button" @click="loginUser" class="btn">Войти</button>
                 </form>
+                <div class="loginError" v-if="this.loginError">
+                    <span class="error">Неверный логин или пароль</span>
+                </div>
             </div>
         </main>
     </div>
@@ -22,15 +25,12 @@
 <script>
 import router from '@/router';
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
-import store from '@/store';
-import authHeader from '@/services/auth-header';
-
 
 export default {
     name: 'Login',
     data() {
         return {
-
+            loginError: false
         }
     },
     computed: {
@@ -55,21 +55,16 @@ export default {
             });
 
             if (response.ok === true) {
+                this.loginError = false;
                 const data = await response.json();
                 let user = JSON.parse(data.user);
                 this.signIn({_user: user.Id, _access_token: data.access_token});
+                router.replace('/');
             }
             else {
-                console.log('Status: ', response.status);
+                console.error('Status: ', response.status);
+                this.loginError = true;
             }
-            
-            const groups = await fetch('http://localhost:5282/api/Group/usergroups?userId=' + 
-                localStorage.getItem('userId'), {
-                    method: 'GET'
-            });
-            let groupsJs = await groups.json();
-            localStorage.setItem('groups', groupsJs);
-            router.push('/');
         }
     }
 }
