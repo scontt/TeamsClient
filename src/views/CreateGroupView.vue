@@ -31,7 +31,8 @@ export default {
     data() {
         return {
             groupName: '',
-            description: ''
+            description: '',
+            param: 0
         }
     },
     methods: {
@@ -53,6 +54,9 @@ export default {
             router.go(-1);
         }
     },
+    watch: {
+
+    },
     components: {
         Header,
         loadConfig
@@ -60,4 +64,4 @@ export default {
 }
 </script>
 
-<style src="../assets/styles/newgroup.css"></style>
+<style src="../assets/styles/newgroup.css" scoped></style>

@@ -35,18 +35,13 @@
 <style src="../assets/styles/header.css" scoped></style>
 
 <script>
-import {mapState, mapGetters, mapActions, mapMutations} from 'vuex';
-
-import store from '@/store';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
     methods: {
         ...mapActions({
-            logout: 'user/userLogoff'
+            userLogoff: 'user/userLogoff'
         }),
-        userLogoff() {
-            this.logout();
-        }
     },
     computed: {
     ...mapState({

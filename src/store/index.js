@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import { userModule } from './userModule';
 import 'es6-promise/auto';
+import router from '@/router';
 
 export default createStore({
     state: () => ({

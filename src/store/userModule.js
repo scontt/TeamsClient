@@ -1,4 +1,5 @@
 import authHeader from "@/services/auth-header";
+import router from '@/router';
 import store from ".";
 
 
@@ -60,7 +61,7 @@ export const userModule = {
             }
         },
         async userLogoff({commit}) {
-            window.location.reload();
+            router.replace('/')
             commit('logoff');
             store.dispatch('userUnlogged');
         }

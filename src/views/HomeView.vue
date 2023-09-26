@@ -7,7 +7,13 @@
                     <h2 class="your-groups">Ваши группы</h2>
                     <div class="my-list">
                         <div class="mylist-item" v-for="group in groups">
-                            <h3 class="groupname"><a href="#" class="grouplink">{{ group.name }}</a></h3>
+                            <h3 class="groupname">
+                                <router-link 
+                                :to="{ path: '/group', query: { 'groupId': group.id}}"
+                                class="grouplink">
+                                    {{ group.name }}
+                                </router-link>
+                            </h3>
                             <p class="groupdescription">{{ group.description }}</p>
                             <p class="membersamount">Количество участников: 0</p>
                         </div>
