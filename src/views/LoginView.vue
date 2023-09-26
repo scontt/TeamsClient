@@ -14,6 +14,13 @@
                     </div>
                     <button type="button" @click="loginUser" class="btn">Войти</button>
                 </form>
+                <span class="reg-advice">Нет аккаунта? 
+                    <router-link 
+                    to="/register"
+                    class="reg-link">
+                        Зарегистрируйтесь
+                    </router-link>
+                </span>
                 <div class="loginError" v-if="this.loginError">
                     <span class="error">Неверный логин или пароль</span>
                 </div>
@@ -58,7 +65,10 @@ export default {
                 this.loginError = false;
                 const data = await response.json();
                 let user = JSON.parse(data.user);
-                this.signIn({_user: user.Id, _access_token: data.access_token});
+                this.signIn({
+                    _user: user.Id, 
+                    _access_token: data.access_token
+                });
                 router.replace('/');
             }
             else {

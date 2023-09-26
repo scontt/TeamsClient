@@ -40,9 +40,13 @@ const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  const protectedRoutes = ['/group', '/creategroup']
+  const protectedRoutes = ['/group']
     if(protectedRoutes.includes(to.path) && !store.getters.getLogged) {
-      next ({ name: 'home' })
+      next ({ name: 'home' });
+    }
+    else if(to.name == 'creategroup' && !store.getters.getLogged)
+    {
+      return '/login';
     }
 });
 

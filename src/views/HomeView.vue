@@ -66,7 +66,7 @@ export default {
   components: {
     Header
   },
-  beforeMount() {
+  created() {
     this.refreshGroupsList();
   },
   computed: {

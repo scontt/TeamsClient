@@ -12,7 +12,7 @@
       display: flex;
       flex-direction: column;
       min-width: 20%;
-      height: 300px;
+      min-height: 320px;
       margin: auto 0;
       background-color: var(--main-bg-color);
       border: 1px solid var(--main-border-color);
@@ -68,4 +68,12 @@
     background-color: #F6CA97;
     border: 1px solid #F6B264;
     border-radius: 5px;
+  }
+
+  .reg-advice {
+    margin-top: 15px;
+  }
+
+  .reg-link {
+    text-decoration: underline;
   }

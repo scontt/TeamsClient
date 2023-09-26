@@ -14,8 +14,9 @@
                     </div>
                     <div class="buttons">
                         <button type="button" @click="sendChanges" class="btn">Сохранить</button>
-                        <button type="button" @click="cancelChanges" class="btn">Отмена</button>
+                        <button type="button" @click="cancelChanges" class="btn">Отменить</button>
                     </div>
+                    <button type="button" @click="deleteGroup" class="btn delete-btn">Удалить</button>
                 </form>
             </div>
         </main>
@@ -23,7 +24,12 @@
 </template>
 
 <script>
+import GroupService from '@/services/group-service';
 import Header from '../components/Header.vue'
+import { mapActions, mapState, mapGetters } from 'vuex'
+import router from '@/router';
+const service = new GroupService();
+
 export default {
     data() {
         return {
@@ -33,15 +39,53 @@ export default {
         }
     },
     methods: {
-        sendChanges() {
+        ...mapActions({
+            refreshGroupsList: 'user/refreshGroupsList'
+        }),
+        async sendChanges() {
+            const body = JSON.stringify({
+                name: this.groupName,
+                description: this.groupDescription,
+                ownerId: localStorage.getItem('userId')
+            });
             
+            try {
+                await service.saveChanges(this.groupId, body);
+            }
+            catch (e) {
+                console.error(e);
+            }
+            finally {
+                this.refreshGroupsList();
+                router.go(-1);
+            }
         },
         cancelChanges() {
+            router.go(-1);
+        },
+        async deleteGroup() {
+            await service.deleteGroup(this.groupId);
+            router.go(-1);
 
         }
     },
+    computed: {
+        ...mapState({
+            groups: state => state.user.groups
+        }),
+    },
+    ...mapGetters({
+        getGroup: 'user/getGroup'
+    }),
     mounted() {
         this.groupId = this.$route.query.groupId;
+        this.groups.forEach(group => {
+            console.log(group.id + ' ' + this.groupId)
+                if (group.id == this.groupId) {
+                    this.groupName = group.name;
+                    this.groupDescription = group.description;
+                }
+            });
     },
     components: {
         Header

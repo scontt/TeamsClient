@@ -20,11 +20,11 @@
                     </div>
                     <div class="auth-container">
                         <div class="auth" v-if="!getLogged">
-                            <router-link to="/register" class="auth-link">Регистрация</router-link>
-                            <router-link to="/login" class="auth-link">Авторизация</router-link>
+                            <router-link to="/register" class="auth-link">Зарегистрироваться</router-link>
+                            <router-link to="/login" class="auth-link">Войти</router-link>
                         </div>
                         <div class="logout" v-else>
-                            <router-link @click.native="userLogoff" to="/">Выход</router-link>
+                            <router-link @click.native="userLogoff" to="/">Выйти</router-link>
                         </div>
                     </div>
                 </div>

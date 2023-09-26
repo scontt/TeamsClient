@@ -8,8 +8,16 @@ export const userModule = {
         groups: [],
     }),
     getters: {
-        getGroups(state) {
+        getAllGroups(state) {
             return state.groups;
+        },
+        getGroup(state, groupId) {
+            state.groups.forEach(group => {
+                if (group.id === groupId) {
+                    return group;
+                }
+                else { return null }
+            });
         }
     },
     mutations: {

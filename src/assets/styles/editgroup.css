@@ -30,3 +30,15 @@
     width: 60%;
     margin-bottom: 10px;
 }
+
+.btn {
+    margin-top: 15px;
+}
+.delete-btn {
+    margin-top: 10px;
+    background-color: #FF9A97FF;
+}
+
+.delete-btn:hover {
+    background: #FF7E7AFF;
+}
