@@ -80,7 +80,6 @@ export default {
     mounted() {
         this.groupId = this.$route.query.groupId;
         this.groups.forEach(group => {
-            console.log(group.id + ' ' + this.groupId)
                 if (group.id == this.groupId) {
                     this.groupName = group.name;
                     this.groupDescription = group.description;

@@ -22,4 +22,8 @@ export default class GroupService {
             }
         });
     }
+
+    async inviteUser() {
+        
+    }
 }

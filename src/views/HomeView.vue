@@ -43,7 +43,7 @@
             </div>
         </main>
         <footer class="footer">
-
+            
         </footer>
 </div>
 </template>
@@ -66,7 +66,7 @@ export default {
   components: {
     Header
   },
-  created() {
+  mounted() {
     this.refreshGroupsList();
   },
   computed: {
