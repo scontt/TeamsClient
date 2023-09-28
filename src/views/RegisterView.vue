@@ -33,6 +33,10 @@
 
 <script>
 import axios from 'axios'
+import UserService from '../services/user-service.js'
+import router from '@/router';
+
+const service = new UserService();
 
 export default {
     data() {
@@ -45,28 +49,21 @@ export default {
     },
     methods: {
         async regUser() {
-            const json = JSON.stringify({
+            const body = JSON.stringify({
                     username: this.username,
                     email: this.email,
                     phoneNumber: this.phoneNumber,
                     password: this.password
                 });
-            // const response = axios.post('http://localhost:5282/api/User/register', json, {
-            //     headers: 'application/json'
-            // });
-            const response = await fetch('http://localhost:5282/api/User/register', {
-                method: 'POST',
-                RequestMode:'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: this.username,
-                    email: this.email,
-                    phoneNumber: this.phoneNumber,
-                    password: this.password
-                })
-            });
+            const response = await service.registerUser(body);
+
+            if (response.ok === true) {
+                router.go(-1);
+            }
+            else {
+                alert('Ошибка!');
+            }
+
         }
     }
 }

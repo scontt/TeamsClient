@@ -7,7 +7,6 @@
 .header {
     width: 100%;
     height: var(--header-height);
-    
 }
 
 .header_inner {
@@ -15,20 +14,19 @@
     width: 100%;
     height: 60px;
     margin: 25px 0;
+    align-items: center;
 }
 
 .header__menu {
+    display: flex;
+    align-items: center;
     background-color: var(--main-bg-color);
     border: 1px solid var(--main-border-color);
     border-radius: 20px;
     margin-left: auto;
     min-width: 50%;
     margin-right: auto;
-}
-
-.auth {
-    margin-left: auto;
-    gap: 5px;
+    min-height: 60px;
 }
 
 .auth-link {
@@ -37,6 +35,7 @@
 
 .menu-list {
     min-height: 100%;
+    min-width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -47,5 +46,7 @@
 
 .auth-container {
     display: flex;
+    right: 0;
     align-items: center;
+    position: absolute;
 }
