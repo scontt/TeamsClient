@@ -1,76 +1,86 @@
 #app {
-    height: inherit;
-  }
+  height: inherit;
+}
   
-  .main {
-      display: flex;
-      justify-content: center;
-  }
-  
-  .main__container {
-      display: flex;
-      flex-direction: column;
-      min-width: 70%;
-  }
-  
-  .my-section {
-      display: flex;
-      flex-direction: column;
-      min-width: 100%;
-      margin: 50px 0;
-      font-family: var(--main-font-family);
-  }
-  
-  .my-list {
-      display: grid;
-      grid-template-columns: repeat(5, 250px);
-      margin-top: 20px;
-      justify-content: space-around;
-  }
-  
-  .your-groups, .your-invitations {
-      margin: 0 30px;
-  }
-  
-  .mylist-item {
-      display: flex;
-      flex-direction: column;
-      background-color: var(--main-bg-color);
-      min-width: 250px;
-      height: 150px;
-      border: 1px solid var(--main-border-color);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-  }
-
-  .mylist-new-item {
+.main {
     display: flex;
-    background-color: var(--temporary-bg-color);
+    justify-content: center;
+}
+  
+.main__container {
+    display: flex;
+    flex-direction: column;
+    min-width: 70%;
+}
+  
+.my-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    margin: 50px 0;
+    font-family: var(--main-font-family);
+}
+  
+.my-list {
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    margin-top: 20px;
+    justify-content: space-around;
+}
+  
+.your-groups, .your-invitations {
+    margin: 0 30px;
+}
+  
+.mylist-item {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg-color);
     min-width: 250px;
     height: 150px;
-    border: 1px dashed var(--main-border-color);
+    border: 1px solid var(--main-border-color);
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
+}
+
+ .mylist-new-item {
+  display: flex;
+  background-color: var(--temporary-bg-color);
+  min-width: 250px;
+  height: 150px;
+  border: 1px dashed var(--main-border-color);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
   
-  .groupdescription {
-      padding: 30px 0 5px;
-  }
+.groupdescription {
+   padding: 30px 0 5px;
+}
 
-  .not-invited {
-    font-weight: 600;
-    color: var(--main-border-color);
-  }
+.not-invited {
+  font-weight: 600;
+  color: var(--main-border-color);
+}
 
-  .create-link:hover .newGroupsvg{
-    stroke: var(--hover-border-color);
-  }
+.create-link:hover .newGroupsvg{
+  stroke: var(--hover-border-color);
+}
 
-  .create-link:hover .mylist-new-item{
-    background-color: var(--hover-bg-color);
-    border: 1px dashed var(--hover-border-color);
-  }
+.create-link:hover .mylist-new-item{
+  background-color: var(--hover-bg-color);
+  border: 1px dashed var(--hover-border-color);
+}
+
+.mylist-enter-active,
+.mylist-leave-active {
+  transition: all .5s ease;
+}
+
+.mylist-enter-from,
+.mylist-leave-to {
+  height: 600px;
+}

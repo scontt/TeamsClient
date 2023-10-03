@@ -1,4 +1,5 @@
 import authHeader from "@/services/auth-header";
+import getBaseURL from "@/assets/api/queries";
 import router from '@/router';
 import store from ".";
 
@@ -40,7 +41,7 @@ export const userModule = {
         async addGroup({dispatch}, _group) {
             try {
                 const bearer = authHeader();
-                const response = await fetch('http://localhost:5282/api/Group/create', {
+                const response = await fetch(getBaseURL() + 'api/Group/create', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -58,7 +59,7 @@ export const userModule = {
         },
         async refreshGroupsList({state, commit}) {
             try {
-                const response = await fetch('http://localhost:5282/api/Group/usergroups?userId=' + localStorage.getItem('userId'), {
+                const response = await fetch(getBaseURL() + 'api/Group/usergroups?userId=' + localStorage.getItem('userId'), {
                     method: 'GET',
                 });
                 let _groups = await response.json();

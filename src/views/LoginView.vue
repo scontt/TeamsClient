@@ -31,6 +31,7 @@
 
 <script>
 import router from '@/router';
+import getBaseURL from '../assets/api/queries.js'
 import {mapState, mapGetters, mapActions, mapMutations} from 'vuex'
 
 export default {
@@ -50,7 +51,7 @@ export default {
             signIn: 'user/userLogin'
         }),
         async loginUser() {
-            const response = await fetch('http://localhost:5282/api/User/auth/signin', {
+            const response = await fetch(getBaseURL() + 'api/User/auth/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

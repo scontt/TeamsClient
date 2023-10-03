@@ -1,9 +1,10 @@
 import store from "@/store";
 import authHeader from "./auth-header";
+import getBaseURL from "@/assets/api/queries";
 
 export default class GroupService {
     async saveChanges(groupId, _body) {
-        await fetch('http://localhost:5282/api/Group/update?groupId=' +
+        await fetch(getBaseURL() + 'api/Group/update?groupId=' +
         groupId, {
             method: 'PUT',
             headers: {
@@ -15,7 +16,7 @@ export default class GroupService {
     }
 
     async deleteGroup(groupId) {
-        await fetch('http://localhost:5282/api/Group/deletegroup?groupId=' + groupId , {
+        await fetch(getBaseURL() + 'api/Group/deletegroup?groupId=' + groupId , {
             method: 'DELETE',
             headers: {
                 'Authorization': authHeader()
