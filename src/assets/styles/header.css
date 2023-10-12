@@ -6,14 +6,17 @@
 
 .header {
     width: 100%;
+    min-height: 92px;
     height: var(--header-height);
+    background-color: var(--main-bg-color);
+    box-shadow: 0 0 5px var(--main-border-color);
 }
 
 .header_inner {
     display: flex;
     width: 100%;
     height: 60px;
-    margin: 25px 0;
+    margin: 25px 0 0 0;
     align-items: center;
 }
 
@@ -21,8 +24,7 @@
     display: flex;
     align-items: center;
     background-color: var(--main-bg-color);
-    border: 1px solid var(--main-border-color);
-    border-radius: 20px;
+    /* border-radius: 20px; */
     margin-left: auto;
     min-width: 50%;
     margin-right: auto;
@@ -49,4 +51,18 @@
     right: 0;
     align-items: center;
     position: absolute;
+}
+
+.menu-list__item-a {
+    text-decoration: line-through;
+    transition: all .1s ease-in-out;
+    border-bottom: 2px solid transparent;
+}
+
+.menu-list__item-a:hover {
+    border-bottom: 2px solid black;
+}
+
+.work { 
+    text-decoration: none;
 }

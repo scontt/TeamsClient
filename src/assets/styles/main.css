@@ -3,9 +3,10 @@
     --main-border-color: #ADB5BD;
     --main-font-family: 'Jost', sans-serif;
     --temporary-bg-color: #F7F7F7FF;
-    --header-height: 12vh;
+    --header-height: 10vh;
     --hover-border-color: #EDEDEDFF;
     --hover-bg-color: #ADB5BD;
+    --border-bottom: 1px solid var(--main-border-color);
 }
 
 html {
@@ -41,9 +42,20 @@ a {
 input {
     min-width: 200px;
     min-height: 27px;
-    border: 1px solid var(--main-border-color);
-    border-radius: 7px;
+    border: 0;
+    background-color: var(--main-bg-color);
+    border-bottom: var(--border-bottom);
+    font-size: 1.1rem;
     padding-left: 3px;
+    font-family: var(--main-font-family);
+    transition: all .3s;
+}
+
+input[type=text]:focus, 
+input[type=textarea]:focus,
+input[type=password]:focus {
+    outline: none;
+    border-bottom: 1px solid black;
 }
 
 #app {
@@ -53,13 +65,19 @@ input {
 .btn {
     min-height: 27px;
     min-width: 200px;
-    border: 1px solid var(--main-border-color);
-    border-radius: 7px;
-    background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    background-color: #f8f8f8;
     font-family: var(--main-font-family);
     font-size: 16px;
+    /* box-shadow: 0 1px 1px var(--main-border-color); */
+    transition: all .1s;
 }
 
 .btn:hover {
     background-color: #ebebeb;
+    cursor: pointer;
+    border-bottom: var(--border-bottom);
+    /* box-shadow: inset 0 1px 1px var(--main-border-color); */
+    transform: translateY(1px);
 }

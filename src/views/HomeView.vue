@@ -8,8 +8,6 @@
                     <div class="my-list">
                         <div class="mylist-item" 
                             v-for="(group, index) in groups" 
-                            :class="{active: index === activeItem}"
-                            @click="expand(index)"
                             :key="index"
                             >
                                 <h3 class="groupname">
@@ -72,13 +70,6 @@ export default {
     ...mapActions({
         refreshGroupsList: 'user/refreshGroupsList'
     }),
-    expand(key) {
-        this.activeItem = key;
-        this.animate()
-    },
-    animate() {
-        gsap.to(".mylist-item.active", {height: 400, duration: .5, ease: "elastic"});
-    }
   },
   components: {
     Header

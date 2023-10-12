@@ -5,7 +5,7 @@
                     <div class="header__menu">
                         <li class="menu-list">
                             <ul class="menu-list__item">
-                                <router-link to="/" class="menu-list__item-a">Группы</router-link>
+                                <router-link to="/" class="menu-list__item-a work">Группы</router-link>
                             </ul>
                             <ul class="menu-list__item">
                                 <a href="#" class="menu-list__item-a">Вакансии</a>
@@ -21,6 +21,7 @@
                     <div class="auth-container">
                         <div class="login" v-if="!getLogged">
                             <router-link to="/register" class="auth-link">Зарегистрироваться</router-link>
+                            <span> | </span>
                             <router-link to="/login" class="auth-link">Войти</router-link>
                         </div>
                         <div class="logout" v-else>
